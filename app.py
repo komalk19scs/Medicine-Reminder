@@ -46,5 +46,4 @@ def medicines_report():
     medicines = list(medicines_collection.find())
     return render_template('medicines_report.html', medicines=medicines)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
