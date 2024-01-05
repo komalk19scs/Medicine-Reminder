@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
+import os
 
 app = Flask(__name__)
 
 # MongoDB connection
-client = MongoClient('mongodb://localhost:27017/')
+mongo_uri = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/')
+client = MongoClient(mongo_uri)
 db = client['medicine_reminder']
 medicines_collection = db['medicines']  # Collection to store medicines
 
