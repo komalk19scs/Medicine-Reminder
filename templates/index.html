@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Medicine Reminder</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom styles */
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Medicine Reminder</h1>
+    
+    <!-- Display Success Message -->
+    {% if success_message %}
+      <div id="success-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+        <div class="toast-header">
+          <strong class="mr-auto">Medicine Reminder</strong>
+        </div>
+        <div class="toast-body">
+          <p style="color: green;">{{ success_message }}</p>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Your form and other content here -->
+    <form id="medicineForm">
+      <!-- Form elements using Bootstrap classes -->
+      <div class="form-group">
+        <label for="userName">User's Name</label>
+        <input type="text" class="form-control" id="userName" placeholder="Enter name">
+      </div>
+      <div class="form-group">
+        <label for="medicalHistory">Medical History</label>
+        <textarea class="form-control" id="medicalHistory" rows="3" placeholder="Enter medical history"></textarea>
+      </div>
+      
+      <button type="button" class="btn btn-primary" onclick="addMedicine()">Add Medicine</button>
+      <button type="button" class="btn btn-success" onclick="showReport()">Show Report</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8Wv2PfkP3R" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // JavaScript functions to handle form submission, report display, etc.
+    function addMedicine() {
+      window.location.href='/add_medicines';
+    }
+    function showReport() {
+      window.location.href='/medicines_report';
+      // Function to display a report of all added medicines and their schedules
+    }
+
+    // Show the toast if success message exists
+    document.addEventListener('DOMContentLoaded', function() {
+      var successToast = document.getElementById('success-toast');
+      if (successToast) {
+        var toast = new bootstrap.Toast(successToast);
+        toast.show();
+      }
+    });
+  </script>
+</body>
+</html>
